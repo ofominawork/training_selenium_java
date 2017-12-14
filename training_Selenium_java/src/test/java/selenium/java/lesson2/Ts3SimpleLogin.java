@@ -2,6 +2,7 @@ package selenium.java.lesson2;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import selenium.java.BaseSeleniumTest;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
@@ -12,11 +13,8 @@ public class Ts3SimpleLogin extends BaseSeleniumTest {
      */
     @Test
     public void correctLogin(){
-        openLink("http://localhost/litecart/admin/login.php");
-        fillTextField("username", "admin");
-        fillTextField("password", "admin");
-        driver.findElement(By.name("login")).click();
-        wait.until(titleIs("My Store"));
+        driver.navigate().to("http://localhost/litecart/admin/login.php");
+        login("admin", "admin", false);
     }
 
     /**
@@ -24,12 +22,8 @@ public class Ts3SimpleLogin extends BaseSeleniumTest {
      */
     @Test
     public void correctLoginWithRemember(){
-        openLink("http://localhost/litecart/admin/login.php");
-        fillTextField("username", "admin");
-        fillTextField("password", "admin");
-        driver.findElement(By.name("remember_me")).click();
-        driver.findElement(By.name("login")).click();
-        wait.until(titleIs("My Store"));
+        driver.navigate().to("http://localhost/litecart/admin/login.php");
+        login("admin", "admin", true);
     }
 
 
