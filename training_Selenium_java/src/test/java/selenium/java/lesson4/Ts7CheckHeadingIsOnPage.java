@@ -15,7 +15,6 @@ public class Ts7CheckHeadingIsOnPage extends BaseSeleniumTest {
 
     /**
      * This method clicks each item of left menu on http://localhost/litecart/admin/
-     * calls checkHeadingIsPresent() method to check if the heading (h1 tag) is present
      */
     @Test
     public void checkHeadingIsOnPage(){
