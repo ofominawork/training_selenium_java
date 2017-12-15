@@ -6,10 +6,8 @@ import org.openqa.selenium.WebElement;
 import selenium.java.BaseSeleniumTest;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class Ts8CheckProductForOneSticker extends BaseSeleniumTest {
 
