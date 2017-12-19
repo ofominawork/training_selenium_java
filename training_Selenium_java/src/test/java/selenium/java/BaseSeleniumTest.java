@@ -8,8 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
@@ -17,7 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 public class BaseSeleniumTest {
     protected WebDriver driver;
-    protected WebDriverWait wait;
+    private WebDriverWait wait;
 
     /**
      * This method starts Google Chrome browser.
@@ -42,7 +45,7 @@ public class BaseSeleniumTest {
      * @param fieldName name of the text field.
      * @param fieldValue input value of the text field.
      */
-    public void fillTextField(String fieldName, String fieldValue){
+    private void fillTextField(String fieldName, String fieldValue){
         WebElement textField = driver.findElement(By.name(fieldName));
         textField.sendKeys(fieldValue);
     }
@@ -53,7 +56,7 @@ public class BaseSeleniumTest {
      * @param password user password value
      * @param remember value of "Remember me" option
      */
-    public void login(String login, String password, boolean remember){
+    protected void login(String login, String password, boolean remember){
         fillTextField("username", login);
         fillTextField("password",password);
         if (remember) {
@@ -61,6 +64,49 @@ public class BaseSeleniumTest {
         }
         driver.findElement(By.name("login")).click();
         wait.until(titleIs("My Store"));
+    }
+
+    /**
+     * This method finds rows in table on a page
+     * @param tblLocator table locator on a page
+     * @param tblRowLocator row locator in table
+     * @return list of rows of table
+     */
+    protected List<WebElement> findRowsInTableByLocator(By tblLocator, By tblRowLocator){
+        WebElement tbl = driver.findElement(tblLocator);
+        return tbl.findElements(tblRowLocator);
+    }
+
+    /**
+     * This method checks sorting of elements in a column of table
+     * @param columnValues list of values in a column of table
+     */
+    protected void checkSortingInColumn(List<String> columnValues){
+        List<String> unsortedColumnValues=new ArrayList<>(columnValues);
+        Collections.sort(columnValues);
+        assertEquals(columnValues, unsortedColumnValues);
+    }
+
+    /**
+     * This method finds values in column of table
+     * @param attribute parameter to search a column of table
+     * @param tblRows list of rows in table
+     * @param tblColumnNumber number of column in table
+     * @param tblNumberOfColumns total number of cilumns in table
+     * @return list of values of column
+     */
+    protected List<String> findValuesInColumn(String attribute, List<WebElement> tblRows, int tblColumnNumber, int tblNumberOfColumns){
+        List<String> tblColumnValues=new ArrayList<>();
+        for (WebElement tblRow : tblRows) {
+            String tblRowValues[] = tblRow.getAttribute(attribute).trim().split("\t");
+            if(tblRowValues.length<tblNumberOfColumns){
+                tblColumnValues.add("");
+            }
+            else {
+                tblColumnValues.add(tblRowValues[tblColumnNumber].toLowerCase());
+            }
+        }
+        return tblColumnValues;
     }
 
 }

@@ -1,10 +1,8 @@
 package selenium.java.lesson2;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import selenium.java.BaseSeleniumTest;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class Ts3SimpleLogin extends BaseSeleniumTest {
 
