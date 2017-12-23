@@ -20,7 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 public class BaseSeleniumTest {
     protected WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriverWait wait;
 
     /**
      * This method starts Google Chrome browser.

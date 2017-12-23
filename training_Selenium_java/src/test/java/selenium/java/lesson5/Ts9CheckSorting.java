@@ -7,7 +7,8 @@ import selenium.java.BaseSeleniumTest;
 import org.openqa.selenium.By;
 
 import java.util.*;
-import java.util.stream.Collectors;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class Ts9CheckSorting extends BaseSeleniumTest {
 
@@ -21,6 +22,7 @@ public class Ts9CheckSorting extends BaseSeleniumTest {
         super.start();
         driver.navigate().to("http://localhost/litecart/admin/login.php");
         login("admin", "admin", false);
+        wait.until(titleIs("My Store"));
     }
 
     /**
