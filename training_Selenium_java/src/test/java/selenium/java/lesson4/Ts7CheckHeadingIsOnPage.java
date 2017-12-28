@@ -1,6 +1,7 @@
 package selenium.java.lesson4;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,13 +15,21 @@ import static org.junit.Assert.assertEquals;
 public class Ts7CheckHeadingIsOnPage extends BaseSeleniumTest {
 
     /**
-     * This method clicks each item of left menu on http://localhost/litecart/admin/
+     * This method opens http://localhost/litecart/admin/login.php
+     */
+    @Before
+    public void start(){
+        super.start();
+        driver.navigate().to("http://localhost/litecart/admin/login.php");
+    }
+
+    /**
+     * This test clicks each item of left menu on http://localhost/litecart/admin/
      * and checks if heading (h1 tag) is present on the page
      */
     @Test
     public void checkHeadingIsOnPage(){
-        driver.navigate().to("http://localhost/litecart/admin/login.php");
-        login("admin", "admin", false);
+        loginToAdmin("admin", "admin", false);
         List<WebElement> parents=driver.findElements(By.id("app-"));;
         for (int i=0; i<parents.size(); i++){
             parents.get(i).click();

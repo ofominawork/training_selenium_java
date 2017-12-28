@@ -15,18 +15,18 @@ public class Ts9CheckSorting extends BaseSeleniumTest {
     private static final String ALL_ZONES = "-- all zones --";
 
     /**
-     * This method calls start() method of parent-class and performs login on http://localhost/litecart/admin/login.php
+     * This method performs login to http://localhost/litecart/admin/login.php
       */
     @Before
     public void start(){
         super.start();
         driver.navigate().to("http://localhost/litecart/admin/login.php");
-        login("admin", "admin", false);
+        loginToAdmin("admin", "admin", false);
         wait.until(titleIs("My Store"));
     }
 
     /**
-     * This method checks sorting of countries on http://localhost/litecart/admin/?app=countries&doc=countries
+     * This test checks sorting of countries on http://localhost/litecart/admin/?app=countries&doc=countries
      */
     @Test
     public void checkCountriesSorting(){
@@ -37,7 +37,7 @@ public class Ts9CheckSorting extends BaseSeleniumTest {
     }
 
     /**
-     * This method checks sorting of zones for countries on http://localhost/litecart/admin/?app=countries&doc=countries
+     * This test checks sorting of zones for countries on http://localhost/litecart/admin/?app=countries&doc=countries
      */
     @Test
     public void checkZonesForCountrySorting(){
@@ -56,7 +56,7 @@ public class Ts9CheckSorting extends BaseSeleniumTest {
     }
 
     /**
-     * This method checks sorting of zones for countries om http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones
+     * This test checks sorting of zones for countries om http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones
      */
     @Test
     public void checkGeoZonesSorting(){

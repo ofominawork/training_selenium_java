@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class Ts8CheckProductForOneSticker extends BaseSeleniumTest {
 
     /**
-     * This method checks that every product on page http://localhost/litecart" has exactly one sticker
+     * This test checks that every product on page http://localhost/litecart" has exactly one sticker
      * Number of stickers (new, sale or etc) = (0 or >=2) fails the test
      */
     @Test
