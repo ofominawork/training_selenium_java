@@ -24,13 +24,12 @@ public class BaseSeleniumTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    /**
-     * This method starts Google Chrome browser.
-     */
     @Before
     public void start(){
         driver=new ChromeDriver();
         wait=new WebDriverWait(driver, 10);
+
+
     }
 
     /**
