@@ -2,6 +2,7 @@ package selenium.java.lesson7;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import selenium.java.BaseSeleniumTest;
@@ -70,9 +71,11 @@ public class TS13AddRemoveProductsInCart extends BaseSeleniumTest {
         driver.get("http://localhost/litecart/en/");
         driver.findElement(MOST_POPULAR_PRODUCTS_LOCATOR).click();
         int numberInCart = Integer.valueOf((driver.findElement(QUANTITY_IN_CART_LOCATOR)).getAttribute("textContent"));
+        /*In order not to check existing sizes of products for this test the first element in selector is selected*/
         if (isElementPresent(SIZE_OF_PRODUCT_LOCATOR)){
-            Select sizeSelector = new Select(driver.findElement(SIZE_OF_PRODUCT_LOCATOR));
-            sizeSelector.selectByVisibleText("Small");
+            driver.findElement(SIZE_OF_PRODUCT_LOCATOR).click();
+            driver.findElement(SIZE_OF_PRODUCT_LOCATOR).sendKeys(Keys.ARROW_DOWN);
+            driver.findElement(SIZE_OF_PRODUCT_LOCATOR).click();
         }
         driver.findElement(ADD_TO_CART_LOCATOR).click();
         wait.until(attributeContains(driver.findElement((QUANTITY_IN_CART_LOCATOR)),"textContent",String.valueOf(numberInCart+1)));
