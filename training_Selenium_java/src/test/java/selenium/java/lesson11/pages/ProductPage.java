@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.attributeContain
 
 public class ProductPage extends Page {
 
-    private static final String SIZE_SELECOR_LOCATOR = "[name='options[Size]']";
+    private static final By SIZE_SELECTOR_LOCATOR = By.cssSelector("[name='options[Size]']");
 
     public ProductPage(WebDriver driver){
         super(driver);
@@ -29,7 +29,7 @@ public class ProductPage extends Page {
 
     public void addToCart(){
         String quantityInCartExpected = String.valueOf(quantityOfItemsInCart()+1);
-        if (isElementPresentOnPage(By.cssSelector(SIZE_SELECOR_LOCATOR))){
+        if (isElementPresentOnPage(SIZE_SELECTOR_LOCATOR)){
           selectFirstAvailableProductSize();
         }
         addCartButton.click();
