@@ -7,13 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import selenium.java.BaseSeleniumTest;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
+
 
 public class Ts14OpenWindowsV2 extends BaseSeleniumTest {
     private static final String LOGIN_TO_ADMIN_URL = "http://localhost/litecart/admin/login.php";

@@ -40,6 +40,7 @@ public class Ts14OpenWindowsV1 extends BaseSeleniumTest {
             assertNotEquals(openedWindows[0],openedWindows[1]);
             driver.close();
             driver.switchTo().window(openedWindows[0]);
+            assertEquals(1, driver.getWindowHandles().size());
         }
         }
 }
