@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(DataProviderRunner.class)
-public class TS12AddProductInAdminTests extends TestBase{
+public class Hw12AddProductInAdminTests extends TestBase{
 
     /**
      * This test adds new product on page http://localhost/litecart/admin/?app=catalog&doc=catalog

@@ -57,7 +57,7 @@ public class Application {
     }
 
     public void quit() {
-         driver.quit();
+         //driver.quit();
     }
 
     public void loginToAdmin(){
@@ -183,6 +183,5 @@ public class Application {
     public int numberOfProductsByName(String query){
         return catalogPage.open().performSearch(query).numberOfExactSearchResults(query);
     }
-
 }
 
